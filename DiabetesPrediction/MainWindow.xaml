@@ -1,0 +1,66 @@
+﻿<Window x:Class="DiabetesPrediction.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:DiabetesPrediction.ViewModels"
+        xmlns:local="clr-namespace:DiabetesPrediction"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"   />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1.2*"  />
+            <ColumnDefinition Width="*"  />
+            <ColumnDefinition Width="1.2*"  />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="0.5*"   />
+        </Grid.ColumnDefinitions>
+        <Label Content="Pregnancies" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Preg}"  Grid.Row="1" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="Glucose" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Plas}" Grid.Row="2" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="Blood Pressure" Grid.Row="3" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Pres}"  Grid.Row="3" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="Skin Thickness" Grid.Row="4" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Skin}"  Grid.Row="4" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="Insulin" Grid.Row="5" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Insu}" Grid.Row="5" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="BMI" Grid.Row="6" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Mass}"  Grid.Row="6" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="Diabetes Pedigree Function" Grid.Row="7" Grid.Column="1"/>
+        <TextBox Text="{Binding Model.Pedi}"  Grid.Row="7" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <Label Content="Age" Grid.Row="8" Grid.Column="1"/>
+        <TextBox  Text="{Binding Model.Age}" Grid.Row="8" Grid.Column="2" LostFocus="TextBox_LostFocus"/>
+
+        <TextBlock Grid.Row="9" Grid.Column="2" Text="Chance of diabetes"/>
+        <TextBlock Grid.Row="9" Grid.Column="3" Text="{Binding ResultPercentage, StringFormat={}{0}% }"  FontSize="18"/>
+        <Button IsEnabled="{Binding IsNotBusy}" Command="{Binding CheckResultCommand}" Grid.Row="11" Content="Predict" Grid.Column="3"/>
+    </Grid>
+</Window>
